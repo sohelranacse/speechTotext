@@ -4,10 +4,10 @@ import time
 from time import ctime
 r = sr.Recognizer()
 
-def record_audio(ask=False):
+def record_audio(say=False):
     with sr.Microphone() as source: # microphone as source
-        if ask:
-            print(ask)
+        if say:
+            print(say)
         audio = r.listen(source)  # listen for the audio via source
 
         voice_data = ''
