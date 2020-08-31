@@ -4,12 +4,9 @@ import time
 from time import ctime
 r = sr.Recognizer()
 
-def record_audio(say=False):
+def my_voice():
     with sr.Microphone() as source: # microphone as source
-        if say:
-            print(say)
         audio = r.listen(source)  # listen for the audio via source
-
         voice_data = ''
         try:
             voice_data = r.recognize_google(audio)  # convert audio to text
@@ -21,7 +18,7 @@ def record_audio(say=False):
 
 print("Please say something...")
 while 1:
-    voice_data = record_audio()
+    voice_data = my_voice()
     if 'exit' in voice_data:
         print('exit in '+ctime())
         exit()
