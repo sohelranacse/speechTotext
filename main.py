@@ -1,26 +1,26 @@
 import speech_recognition as sr
 import pyautogui
 import time
-from time import ctime
-r = sr.Recognizer()
 
 def my_voice():
+    r = sr.Recognizer()
     with sr.Microphone() as source: # microphone as source
         audio = r.listen(source)  # listen for the audio via source
         voice_data = ''
         try:
             voice_data = r.recognize_google(audio)  # convert audio to text
         except sr.UnknownValueError: # error: recognizer does not understand
-            print('I did not get that '+ctime())
-        except sr.RequestError:
-            print('Sorry, the service is down '+ctime()) # error: recognizer is not connected
+            print('I did not get that.')
+        except sr.RequestError: # error: recognizer is not connected
+            print('Sorry, this service is down.')
         return voice_data
 
-print("Please say something...")
 while 1:
-    voice_data = my_voice()
-    if 'exit' in voice_data:
-        print('exit in '+ctime())
+    say = pyautogui.confirm('Say something...')
+    if say == 'OK':
+        voice_data = my_voice()
+        pyautogui.write(voice_data)
+        pyautogui.press('Enter')
+        time.sleep(2)
+    else:
         exit()
-    pyautogui.typewrite(voice_data)
-    pyautogui.press('Enter')
