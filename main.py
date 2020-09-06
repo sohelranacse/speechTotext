@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import pyautogui
-import time
+import sys
 
 def my_voice():
     r = sr.Recognizer()
@@ -15,12 +15,15 @@ def my_voice():
             print('Sorry, this service is down.')
         return voice_data
 
+confirm = pyautogui.confirm(title='Facebook Auto Messaging', text='Welcome to my application', buttons=['Start', 'Close'])
 while 1:
-    say = pyautogui.confirm('Say something...')
-    if say == 'OK':
+    if confirm == 'Start' or confirm == 'Start Again':
         voice_data = my_voice()
-        pyautogui.write(voice_data)
-        pyautogui.press('Enter')
-        time.sleep(2)
+        if voice_data == 'Close' or voice_data == 'close':
+            confirm = pyautogui.confirm(title='Facebook Auto Messaging', text='Are you sure you want to close it?', buttons=['OK', 'Start Again'])
+        elif voice_data !='':
+            print(voice_data)
+            pyautogui.write(voice_data)
+            pyautogui.press('Enter')
     else:
-        exit()
+        sys.exit()
