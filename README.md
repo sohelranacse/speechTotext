@@ -4,3 +4,4 @@ Python app that uses speech recognition and speech-to-text This app initially us
 * pip install speechrecognition
 * pip install pyaudio
 * pip install pyautogui
+* pip install auto-py-to-exe
