@@ -7,7 +7,7 @@ pip install pyautogui
 pip install auto-py-to-exe
 </code></pre>
 
-<pre><code>pip install PyAudio</code></pre>
+<pre><code>pip install pyaudio</code></pre>
 
 (If there is a issue in installing PyAudio use .whl file from this link
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
